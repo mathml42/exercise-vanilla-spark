@@ -16,7 +16,7 @@ if __name__ == "__main__":
     file_path1 = f"{DATA_DIR}/ratings.csv"
 
     # # should show you only 1 job
-    ratings_df = spark.read.csv(file_path1)
+    # ratings_df = spark.read.csv(file_path1)
     # ratings_df.show(truncate=False)
     # ratings_df.collect()
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # ratings_df.show(truncate=False)
 
     # now lets read a bigger csv file
-    file_path2 = f"{DATA_DIR}/TemperaturesByCountry.csv"
+    file_path2 = f"{DATA_DIR}/plane-data.csv"
 
     # A simple read will work the same way as above
     # temp_df = spark.read.csv(file_path2)
@@ -39,10 +39,10 @@ if __name__ == "__main__":
 
     # However, the spark UI will show 2 jobs, one of the header true and other for the inferSchema
     # when you add the inferSchema option
-    # temp_df = spark.read \
-    #     .option("header", "True") \
-    #     .option("inferSchema", "True") \
-    #     .csv(file_path2)
+    temp_df = spark.read \
+        .option("header", "True") \
+        .option("inferSchema", "True") \
+        .csv(file_path2)
     #
     # # show as before will add a job with one task
     # temp_df.show(truncate=False)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     # However, the count will show 5 tasks, for the partition totals
     # and one for the shuffle for the communication across the network
     # which gives and final result
-    # print(temp_df.count())
+    print(temp_df.count())
 
     # collect will show all data in Spark UI and 4 tasks
     # Be careful about collect as it can overwhelm the machines from which
