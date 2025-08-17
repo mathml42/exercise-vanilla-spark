@@ -34,11 +34,11 @@ if __name__ == "__main__":
     # print(x)
 
     # Let's group by and write the data back
-    # df.groupBy(df.Country)\
-    #     .count()\
-    #     .write \
-    #     .mode('overwrite') \
-    #     .csv(f'{OUTPUT_DIR}/shuffle-partitions')
+    df.groupBy(df.Country)\
+        .count()\
+        .write \
+        .mode('overwrite') \
+        .csv(f'{OUTPUT_DIR}/shuffle-partitions')
 
     # # # # check the partitions, you will get 200
 
